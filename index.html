@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+    <title>Crystal Game</title>
+</head>
+
+<body>
+
+    <div id="randomNumber"> </div>
+    <br>
+    <div id="playerPoint">Points: 0</div>
+    <br>
+    <div id="crystal-1"> <img src="assets/images/250px-001Bulbasaur.png" alt="photo" height="100px" width="100px"> </div>
+    <div id="crystal-2"><img src="assets/images/250px-004Charmander.png" alt="photo" height="100px" width="100x"></div>
+    <div id="crystal-3"><img src="assets/images/250px-007Squirtle.png" alt="photo" height="100px" width="100x"></div>
+    <div id="crystal-4"><img src="assets/images/250px-025Pikachu.png" alt="photo" height="100px" width="100x"></div>
+    <br>
+    <div id="wins"></div>
+    <div id="losses"></div>
+
+
+
+
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+    <script type="text/javascript">
+
+        // There will be four crystals displayed as buttons on the page.
+
+        // The player will be shown a random number at the start of the game.
+
+        // When the player clicks on a crystal, it will add a specific amount of points to the player's total score.
+
+        // Your game will hide this amount until the player clicks a crystal.
+        // When they do click one, update the player's score counter.
+        // The player wins if their total score matches the random number from the beginning of the game.
+
+        // The player loses if their score goes above the random number.
+
+        // The game restarts whenever the player wins or loses.
+
+        // When the game begins again, the player should see a new random number. Also, all the crystals will have four new hidden values. Of course, the user's score (and score counter) will reset to zero.
+        // The app should show the number of games the player wins and loses. To that end, do not refresh the page as a means to restart the game.
+
+
+        var crystalOne = Math.floor(Math.random() * 10) + 1;
+        var crystalTwo = Math.floor(Math.random() * 10) + 1;
+        var crystalThree = Math.floor(Math.random() * 10) + 1;
+        var crystalFour = Math.floor(Math.random() * 10) + 1;
+        var playerScore = 0;
+        var randomNum = Math.floor(Math.random() * 100) + 1;
+        var wins = 0
+        var losses = 0
+
+        $("#randomNumber").append("Match this number! " + randomNum)
+
+
+
+
+        $("#crystal-1").click(function () {
+
+            playerScore += crystalOne;
+            $("#playerPoint").text("Points: " + playerScore);
+            
+
+        });
+
+        $("#crystal-2").click(function () {
+            playerScore += crystalTwo;
+            $("#playerPoint").text("Points: " + playerScore)
+        })
+
+        $("#crystal-3").click(function () {
+            playerScore += crystalThree;
+            $("#playerPoint").text("Points: " + playerScore)
+        });
+
+        $("#crystal-4").click(function () {
+            playerScore += crystalFour;
+            $("#playerPoint").text("Points: " + playerScore)
+        })
+
+
+    //     function compare(playerScore, randomNum) {
+    //         if (playerScore === randomNum) {
+    //             alert("you win!")
+    //         }
+    //         if (playreScore >= randomNum) {
+    //             alert("you loose!")
+    //             //reset game
+    //         }
+
+    //     }
+        
+    //    compare(playerScore, randomNum)
+
+    //     $("#wins").append(wins);
+    //     $("losses").append(losses);
+
+
+    </script>
+</body>
+
+</html>
