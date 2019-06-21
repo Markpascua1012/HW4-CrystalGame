@@ -11,19 +11,127 @@
     <title>Crystal Game</title>
 </head>
 
-<body>
+<body background="assets/images/nEzsPL.png">
 
-    <div id="randomNumber"> </div>
-    <br>
-    <div id="playerPoint">Points: 0</div>
-    <br>
-    <div id="crystal-1"> <img src="assets/images/250px-001Bulbasaur.png" alt="photo" height="100px" width="100px"> </div>
-    <div id="crystal-2"><img src="assets/images/250px-004Charmander.png" alt="photo" height="100px" width="100x"></div>
-    <div id="crystal-3"><img src="assets/images/250px-007Squirtle.png" alt="photo" height="100px" width="100x"></div>
-    <div id="crystal-4"><img src="assets/images/250px-025Pikachu.png" alt="photo" height="100px" width="100x"></div>
-    <br>
-    <div id="wins"></div>
-    <div id="losses"></div>
+
+    <div class="jumbotron">
+        <h1 class="display-4">Crystal Game : Pokemon Edition</h1>
+        <p class="lead center"> Oh no! the Pokemon Center is out of energy! Use your electric Pokemon to generate power!
+            Be Careful! Your Pokemon have different energy levels! Too much power and the center will explode! Generate
+            enough power to save the sick Pokemon!
+
+        </p>
+        <hr class="my-4">
+        <p class="center">**Click each Pokemon to send power to the Pokemon Center! Each Pokemon has a certain
+            level of power throughout! Match the "Power Level to win!**</p>
+
+    </div>
+
+
+    <div class="container">
+        <div class="row">
+            <div class="col-6">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="center">
+                            <img src="assets/images/250px-Pokémon_Center_PO.png" alt="photo" height="175px"
+                                width="250px">
+                            <div id="randomNumber">Pokemon Center Power Capacity: </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="col-6">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="center"><img src="assets/images/250px-Power_Plant.png">
+                            <div id="playerPoint">Power Level: 0</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <br>
+
+
+        <div class="row">
+            <div class="col-12">
+                <div class="center">
+                    <div class="card">
+                        <div class="card-body">
+                            <div id="wins">Victories: </div>
+                            <div id="losses">Defeats:</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <br>
+
+        <div class="row">
+            <div class="col-3">
+
+                <div class="card center">
+                    <div class="card-body">
+                            <div id="crystal-1"> <img src="assets/images/250px-025Pikachu.png" alt="photo" height="100px" width="100px">
+                            </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="col-3">
+
+                <div class="card center">
+                    <div class="card-body">
+                            <div id="crystal-2"><img src="assets/images/250px-100Voltorb.png" alt="photo" height="100px" width="100x"></div>
+                    </div>
+                </div>
+
+            </div>
+
+
+            <div class="col-3">
+
+                <div class="card center">
+                    <div class="card-body">
+                            <div id="crystal-3"><img src="assets/images/250px-125Electabuzz.png" alt="photo" height="100px" width="100x"></div>
+                    </div>
+                </div>
+
+            </div>
+
+
+            <div class="col-3">
+
+                <div class="card center">
+                    <div class="card-body">
+                            <div id="crystal-4"><img src="assets/images/250px-135Jolteon.png" alt="photo" height="100px" width="100x"></div>
+                    </div>
+                </div>
+
+            </div>
+
+
+
+
+        </div>
+
+
+
+    </div>
+
+
+<br>
+<br>
+<br>
+
+
 
 
 
@@ -38,7 +146,7 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
         integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
         crossorigin="anonymous"></script>
-    <script type="text/javascript">
+    <script type="text/javascript" href="assets/javascript/js.game">
 
         // There will be four crystals displayed as buttons on the page.
 
@@ -64,10 +172,27 @@
         var crystalFour = Math.floor(Math.random() * 10) + 1;
         var playerScore = 0;
         var randomNum = Math.floor(Math.random() * 100) + 1;
-        var wins = 0
-        var losses = 0
+        var wins = 0;
+        var losses = 0;
 
-        $("#randomNumber").append("Match this number! " + randomNum)
+        function resetValues() {
+
+            crystalOne = Math.floor(Math.random() * 10) + 1;
+            crystalTwo = Math.floor(Math.random() * 10) + 1;
+            crystalThree = Math.floor(Math.random() * 10) + 1;
+            crystalFour = Math.floor(Math.random() * 10) + 1;
+            playerScore = 0;
+            randomNum = Math.floor(Math.random() * 100) + 1;
+            $("#randomNumber").text("Pokemon Center Power Capacity: " + randomNum);
+            $("#playerPoint").text("Power Level: " + playerScore)
+
+        };
+
+
+        $("#randomNumber").text("Pokemon Center Power Capacity: " + randomNum)
+
+
+
 
 
 
@@ -76,41 +201,85 @@
 
             playerScore += crystalOne;
             $("#playerPoint").text("Points: " + playerScore);
-            
 
+
+            if (playerScore === randomNum) {
+                wins++;
+                alert("You a Winnahhhh");
+                resetValues();
+            };
+            if (playerScore >= randomNum) {
+                losses++;
+                alert("You a Loooosahhhhh");
+                resetValues()
+            };
+
+            $("#wins").text("Victories: " + wins);
+            $("#losses").text("Defeats: " + losses);
         });
 
         $("#crystal-2").click(function () {
             playerScore += crystalTwo;
-            $("#playerPoint").text("Points: " + playerScore)
+            $("#playerPoint").text("Points: " + playerScore);
+
+            if (playerScore === randomNum) {
+                wins++;
+                alert("You a Winnahhhh");
+                resetValues()
+            };
+            if (playerScore >= randomNum) {
+                losses++;
+                alert("You a Loooosahhhhh");
+                resetValues()
+            };
+
+            $("#wins").text("Victories: " + wins);
+            $("#losses").text("Defeats: " + losses);
         })
 
         $("#crystal-3").click(function () {
             playerScore += crystalThree;
-            $("#playerPoint").text("Points: " + playerScore)
+            $("#playerPoint").text("Points: " + playerScore);
+
+            if (playerScore === randomNum) {
+                wins++;
+                alert("You a Winnahhhh");
+                resetValues()
+            };
+            if (playerScore >= randomNum) {
+                losses++;
+                alert("You a Loooosahhhhh");
+                resetValues()
+            };
+
+            $("#wins").text("Victories: " + wins);
+            $("#losses").text("Defeats: " + losses);
         });
 
         $("#crystal-4").click(function () {
             playerScore += crystalFour;
-            $("#playerPoint").text("Points: " + playerScore)
-        })
+            $("#playerPoint").text("Points: " + playerScore);
+
+            if (playerScore === randomNum) {
+                wins++;
+                alert("You a Winnahhhh");
+                resetValues()
+            };
+            if (playerScore >= randomNum) {
+                losses++;
+                alert("You a Loooosahhhhh");
+                resetValues()
+            };
+
+            $("#wins").text("Victories: " + wins);
+            $("#losses").text("Defeats: " + losses);
+        });
 
 
-    //     function compare(playerScore, randomNum) {
-    //         if (playerScore === randomNum) {
-    //             alert("you win!")
-    //         }
-    //         if (playreScore >= randomNum) {
-    //             alert("you loose!")
-    //             //reset game
-    //         }
 
-    //     }
-        
-    //    compare(playerScore, randomNum)
 
-    //     $("#wins").append(wins);
-    //     $("losses").append(losses);
+
+
 
 
     </script>
